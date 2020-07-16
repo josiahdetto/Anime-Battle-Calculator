@@ -71,7 +71,7 @@ class Calculations:
         pass
     
     def get_score(self):
-        if self.state:
+        if self.state: 
             return self.calculate_during_battle()
         else:
             return self.calculate_pre_battle()
@@ -79,11 +79,7 @@ class Calculations:
     def get_verdict():
         score = self.get_score()
 
-        if score >= 0.8:
+        if score > 0.5:
             return True
         else:
-            pass
-    
-        
-    
-            
+            return False
