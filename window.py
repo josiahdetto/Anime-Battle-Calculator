@@ -3,29 +3,73 @@ from tkinter import *
 def set_parameters():
     """Receives user input for the necessary values of the diagram and assigns them to variables"""
     root = Tk()
-    root.title("Telescope Simulation")
+    
+    char_role = IntVar()
+    enemy_role = IntVar()
+    CheckVar1 = IntVar()
+    CheckVar2 = IntVar()
+    CheckVar3 = IntVar()
+    
+    root.title("Anime Battle Calculator")
     root.geometry("500x320+0+0")
 
-    Label(root, text="Enter the height of the object(cm)", font=("time new roman",10)).place(x=20,y=20)
-    Label(root, text="Enter the object distance from the objective lens(cm)", font=("time new roman",10)).place(x=20,y=70)
-    Label(root, text="Enter the focal point of the objective lens(cm)", font=("time new roman",10)).place(x=20,y=120)
-    Label(root, text="Enter the focal point of the ocular lens(cm)", font=("time new roman",10)).place(x=20,y=170)
-    Label(root, text="Enter the distance between the two lens(cm)",font=("time new roman",10)).place(x=20,y=220)
+    Label(root, text="Is the character a:", font=("time new roman",10)).place(x=20,y=10)
+    Label(root, text="Has the character trained prior to this battle?", font=("time new roman",10)).place(x=20,y=70)
+    Label(root, text="Is the enemy a:", font=("time new roman",10)).place(x=20,y=110)
+    Label(root, text="Has the character lost to this enemy before?", font=("time new roman",10)).place(x=20,y=170)
+    Label(root, text="If so, how many times?", font=("time new roman",10)).place(x=142,y=193)
+    Label(root, text="Is the character fighting to protect his friends?",font=("time new roman",10)).place(x=20,y=235)
 
-    height_object=Entry(root)
-    distance_object=Entry(root)
-    focal_objective=Entry(root)
-    focal_ocular=Entry(root)
-    len_distance=Entry(root) 
+    protagonist=Radiobutton(root, 
+              text="Protagonist",
+              padx = 20, 
+              variable=char_role, 
+              value=1).place(x=5,y=30)
+    side_char=Radiobutton(root, 
+              text="Side Character",
+              padx = 20, 
+              variable=char_role, 
+              value=2).place(x=125,y=30)
+    random_char=Radiobutton(root, 
+              text="Random Character",
+              padx = 20, 
+              variable=char_role, 
+              value=3).place(x=245,y=30)
 
-    height_object.place(x=225,y=20)
-    distance_object.place(x=340, y=70)
-    focal_objective.place(x=300,y=120)
-    focal_ocular.place(x=275,y=170)
-    len_distance.place(x=295,y=220)
+    C1 = Checkbutton(root, variable = CheckVar1, \
+                 onvalue = 1, offvalue = 0, height=1, \
+                 width = 5).place(x=290, y=69)
+
+    boss=Radiobutton(root, 
+              text="Final Boss",
+              padx = 20, 
+              variable=enemy_role, 
+              value=1).place(x=5,y=130)
+    strong_lackey=Radiobutton(root, 
+              text="Top Subordinate",
+              padx = 20, 
+              variable=enemy_role, 
+              value=2).place(x=115,y=130)
+    weak_lackey=Radiobutton(root, 
+              text="Low Level Lackey",
+              padx = 20, 
+              variable=enemy_role, 
+              value=3).place(x=245,y=130)
+
+    C2 = Checkbutton(root, variable = CheckVar2, \
+                 onvalue = 1, offvalue = 0, height=1, \
+                 width = 5).place(x=290, y=168)
+
+    C3 = Checkbutton(root, variable = CheckVar3, \
+                 onvalue = 1, offvalue = 0, height=1, \
+                 width = 5).place(x=290, y=233)
+    
+    times_lost=Entry(root) 
+
+    times_lost.place(x=295,y=195)
      
-    Button(root, text='Quit', width = 5,command=root.quit).place(x=20,y=270)
-    Button(root, text='Submit',width=5, command=root.destroy).place(x=100,y=270)
+    Button(root, text='Quit', width = 5,command=root.quit).place(x=20,y=280)
+    Button(root, text='Submit',width=5, command=root.destroy).place(x=100,y=280)
 
     mainloop()
 
